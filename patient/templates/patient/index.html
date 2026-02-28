@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #4CAF50;
+        }
+
+        /* Add some space below the navigation */
+        ul {
+            margin-top: 30px;
+        }
+
+        /* Mobile-Friendly */
+        @media (max-width: 600px) {
+            ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Patient Management System</h1>
+
+    <ul>
+        <li><a href="{% url 'patient:home' %}">Home</a></li>
+        <li><a href="{% url 'patient:add_patient' %}">Add Patient</a></li>
+        <li><a href="{% url 'patient:search_patient' %}">Search Patient</a></li>
+        <li><a href="{% url 'patient:patient_list' %}">Patient List</a></li>
+        <li><a href="{% url 'patient:add_appointments' %}">Add Appointment</a></li>
+        <li><a href="{% url 'patient:view_appointment' %}">View Appointment</a></li>
+        <li><a href="{% url 'patient:dashboard' %}">dashboard</a></LI>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Patient</title>
+</head>
+<body>
+    <h2>Delete Patient</h2>
+
+    <p>Are you sure you want to delete <strong>{{ patient.name }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+        <a href="{% url 'patient:search_patient' %}">
+    </form>
+</body>
+</html>

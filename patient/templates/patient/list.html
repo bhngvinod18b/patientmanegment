@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient List</title>
+</head>
+<body>
+
+    <h2>Patient List</h2>
+
+    <a href="{% url 'patient:add_patient' %}">Add New Patient</a>
+    <a href="{% url 'patient:search_patient' %}">Search Patient</a>
+
+    <br><br>
+
+{% if patients %}
+        <table border="1" cellpadding="8">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+
+{% for patient in patients %}
+            <tr>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.phone }}</td>
+                <td>{{ patient.description }}</td>
+                <td>
+                    <form action="{% url 'patient:delete_patient' patient.phone %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    {% else %}
+        <p>No patients found.</p>
+    {% endif %}
+
+</body>
+</html>

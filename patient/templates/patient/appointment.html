@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Page</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        /* Error Message */
+        .error {
+            color: red;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 1em;
+        }
+
+        input:focus, select:focus {
+            border-color: #4CAF50;
+            background-color: #fff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Appointment List Table */
+        table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover td {
+            background-color: #f1f1f1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                width: 90%;
+                margin: 10px;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Add Appointment</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Phone Number:</label><br>
+        <input type="text" name="phone" required><br><br>
+
+        <label>Department:</label><br>
+        <select name="department" required>
+            <option value="CARDIOLOGY">CARDIOLOGY</option>
+            <option value="DERMATOLOGY">DERMATOLOGY</option>
+            <option value="NEUROLOGY">NEUROLOGY</option>
+            <option value="NEPHROLOGY">NEPHROLOGY</option>
+        </select><br><br>
+
+        <label>Date:</label><br>
+        <input type="date" name="date" required><br><br>
+
+        <label>Time:</label><br>
+        <input type="time" name="time" required><br><br>
+        <label> stetus: </label><br>
+        <select name="stetus" required>
+            <option value="PENDING">PENDING</OPTION>
+            <option value="NOT DONE">NOT DONE</option>
+            <option value="DONE">DONE</option>
+        </select><br><br>
+
+        <button type="submit">Add Appointment</button>
+    </form>
+
+    <hr>
+
+    <h2>Appointment List</h2>
+
+    <table>
+        <tr>
+            <th>Phone</th>
+            <th>Department</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.phone }}</td>
+            <td>{{ appointment.department }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" style="text-align:center;">No appointments available</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

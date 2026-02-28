@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h1>Hospital Dashboard</h1>
+    <hr>
+
+    <h2>Statistics</h2>
+
+    <p><strong>Total Patients:</strong> {{ total_patients }}</p>
+    <p><strong>Total Appointments:</strong> {{ total_appointments }}</p>
+    <p><strong>Done Appointments:</strong> {{ done_appointments }}</p>
+    <p><strong>Pending Appointments:</strong> {{ pending_appointments }}</p>
+    <p><strong>Not Done Appointments:</strong> {{ not_done_appointments }}</p>
+
+    <hr>
+
+    <h2>Today's Appointments</h2>
+
+    {% if todays_appointments %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Patient</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+
+            {% for appointment in todays_appointments %}
+            <tr>
+                <td>{{ appointment.patient.name }}</td>
+                <td>{{ appointment.phone }}</td>
+                <td>{{ appointment.department }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.stetus }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No appointments for today.</p>
+    {% endif %}
+<li><a href="{% url 'patient:home' %}">Home</a></li>
+</body>
+</html>
