@@ -224,7 +224,7 @@ SQLite (default database)
 
 ⚙️ Installation Guide
 1️⃣ Clone the Repository
-git clone https://github.com/your-username/your-repository-name.git
+git clone https://github.com/bhngvinod18b/patientmanegement.git
 cd your-repository-name
 2️⃣ Create Virtual Environment
 python -m venv venv
