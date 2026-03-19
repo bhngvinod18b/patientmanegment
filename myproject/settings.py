@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-%w(*(lr#er*(h=@bd9@l2urlwyjss34c62$+g(+l-&zrsv@4(z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['patientmanegment-4.onrender.com']
 
 
 # Application definition
