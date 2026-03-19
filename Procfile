@@ -1,1 +1,1 @@
-web: gunicorn patient_manegment.wsgi
+web: gunicorn patientmanegement.wsgi
