@@ -111,6 +111,9 @@
         <textarea name="description" placeholder="Description" required></textarea><br><br>
         <button type="submit">Add Patient</button>
     </form>
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
 
     <br>
     <a href="{% url 'patient:search_patient' %}">Search Patient</a><br>

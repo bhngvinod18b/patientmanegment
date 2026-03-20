@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-%w(*(lr#er*(h=@bd9@l2urlwyjss34c62$+g(+l-&zrsv@4(z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-ALLOWED_HOSTS = ['patientmanegment-4.onrender.com']
+ALLOWED_HOSTS = ['patientmanegment-4.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -118,3 +117,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+ALLOWED_HOSTS = ['patientmanegment-4.onrender.com', 'localhost', '127.0.0.1']
+

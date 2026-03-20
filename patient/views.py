@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Patient, Appointment
 from django.http import HttpResponse
+from django.db import IntegrityError
 
 
 def home(request):
@@ -10,16 +11,26 @@ def patient_list(request):
     patients = Patient.objects.all()
     return render(request, 'patient/list.html', {'patients': patients})
     
+
+from django.db import IntegrityError
 def add_patient(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         description = request.POST.get('description')
+
         if name and phone and description:
-            Patient.objects.create(
-                name=name, phone=phone, description=description
-            )
-            return redirect('patient:patient_list')# for GET requests, show empty form
+            try:
+                Patient.objects.create(
+                    name=name,
+                    phone=phone,
+                    description=description
+                )
+                return redirect('patient:patient_list')
+            except IntegrityError:
+                return render(request, 'patient/add.html', {
+                    'error': 'Patient with this phone already exist! please try another number'
+                })
 
     return render(request, 'patient/add.html')
 
