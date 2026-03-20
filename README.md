@@ -1,4 +1,6 @@
 🏥 Patient & Appointment Management System
+https://patientmanegment-4.onrender.com/
+it will take 3 to 5 mints to start or reload the server to start pls wait until it open
 
 A web-based Patient and Appointment Management System built using Django and Django REST Framework.
 
